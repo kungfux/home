@@ -5,5 +5,8 @@
     <Setting Name="Title" Type="System.String" Scope="User">
       <Value Profile="(Default)">Smart Point</Value>
     </Setting>
+    <Setting Name="Url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/kungfux/smartpoint</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

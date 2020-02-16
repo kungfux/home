@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using SmartPoint.Properties;
 
 namespace SmartPoint.View.Control
 {
@@ -12,7 +13,7 @@ namespace SmartPoint.View.Control
         {
             var settings = new CefSettings();
             Cef.Initialize(settings);
-            ChromeBrowser = new ChromiumWebBrowser("google.com");
+            ChromeBrowser = new ChromiumWebBrowser(Settings.Default.Url);
         }
 
         public void Shutdown() => Cef.Shutdown();
