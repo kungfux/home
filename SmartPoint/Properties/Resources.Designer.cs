@@ -71,15 +71,6 @@ namespace SmartPoint.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Smart Point.
-        /// </summary>
-        internal static string AppTitle {
-            get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         internal static string Exit {

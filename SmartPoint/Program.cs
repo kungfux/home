@@ -9,7 +9,7 @@ namespace SmartPoint
 {
     internal static class Program
     {
-        private static readonly string _title = Resources.AppTitle;
+        private static readonly string _title = Settings.Default.Title;
         private const string _mutexName = "SmartPoint2020";
         private static Mutex _mutex = null;
 

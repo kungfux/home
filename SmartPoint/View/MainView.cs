@@ -16,7 +16,7 @@ namespace SmartPoint.View
             _trayIcon = trayIcon;
             _browserControl = browserControl;
 
-            Text = Resources.AppTitle;
+            Text = Settings.Default.Title;
             Icon = icon;
 
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
