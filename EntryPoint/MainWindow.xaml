@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:local="clr-namespace:EntryPoint"
+        xmlns:converters="clr-namespace:EntryPoint.Converters"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -18,7 +20,36 @@
         Icon="pack://application:,,,/assets/favicon.ico"
         Height="400"
         Width="600">
-    <Grid>
-        
-    </Grid>
+
+    <Window.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+        <DockPanel>
+            <materialDesign:ColorZone DockPanel.Dock="Top" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
+                <StackPanel Orientation="Vertical">
+                    <DockPanel>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                            <StackPanel>
+                                <Button Content="Settings" IsEnabled="True" />
+                                <Separator/>
+                                <Button Content="Exit" IsEnabled="True" />
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                        <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back">
+                            <materialDesign:PackIcon Kind="StepBackward" Height="24" Width="24" />
+                        </Button>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Text="{DynamicResource ApplicationName}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </materialDesign:ColorZone>
+
+            <ProgressBar DockPanel.Dock="Top" IsIndeterminate="{Binding WebBrowser.IsLoading}" Visibility="{Binding WebBrowser.IsLoading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+            <wpf:ChromiumWebBrowser Address="http://google.com" />
+        </DockPanel>
+    </materialDesign:DialogHost>
 </Window>
