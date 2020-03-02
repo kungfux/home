@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:taskbar="http://www.hardcodet.net/taskbar"
         xmlns:local="clr-namespace:EntryPoint"
         xmlns:converters="clr-namespace:EntryPoint.Converters"
         mc:Ignorable="d"
@@ -25,9 +26,17 @@
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
 
-    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
-        <DockPanel>
-            <materialDesign:ColorZone DockPanel.Dock="Top" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
+    <materialDesign:DialogHost>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <taskbar:TaskbarIcon x:Name="myNotifyIcon" Visibility="Visible" ToolTipText="Fallback ToolTip for Windows xp" IconSource="pack://application:,,,/assets/favicon.ico" MenuActivation="LeftOrRightClick" PopupActivation="DoubleClick"/>
+
+            <materialDesign:ColorZone Grid.Row="0" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
                 <StackPanel Orientation="Vertical">
                     <DockPanel>
                         <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
@@ -47,9 +56,9 @@
                 </StackPanel>
             </materialDesign:ColorZone>
 
-            <ProgressBar DockPanel.Dock="Top" IsIndeterminate="{Binding WebBrowser.IsLoading}" Visibility="{Binding WebBrowser.IsLoading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <ProgressBar Grid.Row="1" Height="5" IsIndeterminate="{Binding WebBrowser.IsLoading}"/>
 
-            <wpf:ChromiumWebBrowser Address="http://google.com" />
-        </DockPanel>
+            <wpf:ChromiumWebBrowser Grid.Row="2" Address="http://google.com" />
+        </Grid>
     </materialDesign:DialogHost>
 </Window>
