@@ -20,7 +20,8 @@
         Title="{DynamicResource ApplicationName}"
         Icon="pack://application:,,,/assets/favicon.ico"
         Height="400"
-        Width="600">
+        Width="600"
+        KeyDown="Window_KeyDown">
 
     <Window.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -46,19 +47,19 @@
                                 <Button Content="Exit" IsEnabled="True" />
                             </StackPanel>
                         </materialDesign:PopupBox>
-                        <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back">
+                        <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back" Click="GoBack_Click">
                             <materialDesign:PackIcon Kind="StepBackward" Height="24" Width="24" />
                         </Button>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Text="{DynamicResource ApplicationName}"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Text="{Binding Title}"/>
                         </StackPanel>
                     </DockPanel>
                 </StackPanel>
             </materialDesign:ColorZone>
 
-            <ProgressBar Grid.Row="1" Height="5" IsIndeterminate="{Binding WebBrowser.IsLoading}"/>
+            <ProgressBar Grid.Row="1" Height="5" IsIndeterminate="{Binding IsLoading}" Visibility="{Binding WebBrowser.IsLoading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-            <wpf:ChromiumWebBrowser Grid.Row="2" Address="http://google.com" />
+            <ContentControl Grid.Row="2" x:Name="browserContainer" UseLayoutRounding="True" />
         </Grid>
     </materialDesign:DialogHost>
 </Window>
