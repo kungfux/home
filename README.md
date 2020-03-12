@@ -1,6 +1,6 @@
 [![build](https://ci.appveyor.com/api/projects/status/rokl6yurcf3hv1kt/branch/master?svg=true)](https://ci.appveyor.com/api/projects/status/rokl6yurcf3hv1kt/branch/master?svg=true)
 
-# Smart Point
+# The Gate
 
 Windows desktop app that stays in system tray and provides a quick access to your smart home web panel such as OpenHAB Basic UI
 
@@ -14,7 +14,7 @@ You need to install the following software: [.NET Framework 4.7.2](https://dotne
 
 ### Installing
 
-Navigate to [releases](https://github.com/kungfux/smartpoint/releases) and download the latest version. There are a few options:
+Navigate to [releases](https://github.com/kungfux/thegate/releases) and download the latest version. There are a few options:
 * zip archive
 * exe installer
 * build from the code
@@ -39,7 +39,7 @@ Feel free to open issues and submit pull requests.
 
 * **kungfux** - *Initial work* - [kungfux](https://github.com/kungfux)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/thegate/contributors) who participated in this project.
 
 ## License
 

@@ -10,8 +10,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>{C9E1E4D2-EC65-4AE1-B6DD-304647839BE8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>EntryPoint</RootNamespace>
-    <AssemblyName>EntryPoint</AssemblyName>
+    <RootNamespace>TheGate</RootNamespace>
+    <AssemblyName>TheGate</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -22,7 +22,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>EntryPoint.App</StartupObject>
+    <StartupObject>TheGate.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -123,7 +123,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\favicon.ico" />
   </ItemGroup>

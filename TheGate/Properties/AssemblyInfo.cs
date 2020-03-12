@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EntryPoint")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("The Gate")]
+[assembly: AssemblyDescription("The gate to smart home control panel")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EntryPoint")]
+[assembly: AssemblyProduct("TheGate")]
 [assembly: AssemblyCopyright("Copyright © kungfux 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

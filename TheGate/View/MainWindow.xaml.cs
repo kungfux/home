@@ -1,7 +1,7 @@
-﻿using EntryPoint.ViewModel;
+﻿using TheGate.ViewModel;
 using System.Windows;
 
-namespace EntryPoint.View
+namespace TheGate.View
 {
     public partial class MainWindow : Window
     {

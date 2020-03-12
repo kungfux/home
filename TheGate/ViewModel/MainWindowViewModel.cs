@@ -1,6 +1,6 @@
-﻿using EntryPoint.Model;
+﻿using TheGate.Model;
 
-namespace EntryPoint.ViewModel
+namespace TheGate.ViewModel
 {
     public class MainWindowViewModel
     {

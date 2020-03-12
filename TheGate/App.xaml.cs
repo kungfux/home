@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows;
 
-namespace EntryPoint
+namespace TheGate
 {
     public partial class App : Application
     {

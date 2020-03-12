@@ -2,7 +2,7 @@
 using CefSharp.Wpf;
 using System.Windows.Input;
 
-namespace EntryPoint.Model
+namespace TheGate.Model
 {
     public class WebBrowser
     {
