@@ -77,6 +77,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\WebBrowser.cs" />
+    <Compile Include="ViewModel\Command\ExitApplicationCommand.cs" />
+    <Compile Include="ViewModel\Command\ShowWindowCommand.cs" />
     <Compile Include="ViewModel\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />

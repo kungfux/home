@@ -1,5 +1,6 @@
 ﻿using TheGate.ViewModel;
 using System.Windows;
+using System.ComponentModel;
 
 namespace TheGate.View
 {
@@ -10,6 +11,12 @@ namespace TheGate.View
             InitializeComponent();
 
             DataContext = new MainWindowViewModel();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
     }
 }
