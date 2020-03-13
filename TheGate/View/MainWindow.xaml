@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:TheGate.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:taskbar="http://www.hardcodet.net/taskbar"
         xmlns:converter="clr-namespace:TheGate.ViewModel.Converter"
-        xmlns:command="clr-namespace:TheGate.ViewModel.Command"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -24,9 +24,11 @@
 
     <Window.Resources>
         <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <command:ShowWindowCommand x:Key="ShowWindowCommand" />
-        <command:ExitApplicationCommand x:Key="ExitApplicationCommand" />
     </Window.Resources>
+
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
 
     <materialDesign:DialogHost>
         <Grid>
@@ -36,7 +38,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <taskbar:TaskbarIcon Visibility="Visible" ToolTipText="{DynamicResource ApplicationName}" IconSource="pack://application:,,,/assets/favicon.ico" LeftClickCommand="{StaticResource ShowWindowCommand}" LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+            <taskbar:TaskbarIcon Visibility="Visible" ToolTipText="{DynamicResource ApplicationName}" IconSource="pack://application:,,,/assets/favicon.ico" LeftClickCommand="{Binding ShowWindowCommand}" LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
 
             <materialDesign:ColorZone Grid.Row="0" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
                 <StackPanel Orientation="Vertical">
@@ -45,7 +47,7 @@
                             <StackPanel>
                                 <Button Content="Settings" IsEnabled="True" />
                                 <Separator/>
-                                <Button Content="Exit" IsEnabled="True" Command="{StaticResource ExitApplicationCommand}"/>
+                                <Button Content="Exit" IsEnabled="True" Command="{Binding ExitApplicationCommand}"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
                         <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back" Command="{Binding WebBrowser.WebBrowserInstance.BackCommand}">

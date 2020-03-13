@@ -77,11 +77,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\WebBrowser.cs" />
-    <Compile Include="ViewModel\Command\ExitApplicationCommand.cs" />
-    <Compile Include="ViewModel\Command\ShowWindowCommand.cs" />
     <Compile Include="ViewModel\Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
