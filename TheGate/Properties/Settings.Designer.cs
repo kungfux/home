@@ -26,7 +26,7 @@ namespace TheGate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.30:8080/basicui/app")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://demo.openhab.org:8080/basicui/app?sitemap=demo")]
         public string URL {
             get {
                 return ((string)(this["URL"]));

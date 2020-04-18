@@ -15,13 +15,15 @@ namespace TheGate.Model
                 Address = Properties.Settings.Default.URL
             };
 
-            WebBrowserInstance.BrowserSettings = new BrowserSettings()
-            {
-                ImageLoading = CefState.Enabled,
-                WindowlessFrameRate = 60,
-                ApplicationCache = CefState.Enabled,
-                RemoteFonts = CefState.Enabled
-            };
+            //WebBrowserInstance.BrowserSettings = new BrowserSettings()
+            //{
+            //    ImageLoading = CefState.Enabled,
+            //    WindowlessFrameRate = 60,
+            //    ApplicationCache = CefState.Enabled,
+            //    RemoteFonts = CefState.Enabled,
+            //    FileAccessFromFileUrls = CefState.Enabled,
+            //    UniversalAccessFromFileUrls = CefState.Enabled
+            //};
 
             WebBrowserInstance.KeyDown += WebBrowserInstance_KeyDown;
         }
