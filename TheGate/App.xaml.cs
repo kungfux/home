@@ -16,8 +16,8 @@ namespace TheGate
             if (IsAppAlreadyRunning() || !InitMutex())
             {
                 MessageBox.Show(
-                    GetTranslatedString("MessageAppAlreadyRunning"),
-                    GetTranslatedString("MessageDefaultCaption"),
+                    GetTranslatedText("MessageAppAlreadyRunning"),
+                    GetTranslatedText("MessageDefaultCaption"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Exclamation);
                 Current.Shutdown();
@@ -44,18 +44,18 @@ namespace TheGate
             var dict = new ResourceDictionary();
             switch (Thread.CurrentThread.CurrentCulture.ToString())
             {
+                default:
+                case "en-US":
+                    dict.Source = new Uri("Properties\\StringResources.en-US.xaml", UriKind.Relative);
+                    break;
                 case "ru-RU":
                     dict.Source = new Uri("Properties\\StringResources.ru-RU.xaml", UriKind.Relative);
-                    break;
-                case "en-US":
-                default:
-                    dict.Source = new Uri("Properties\\StringResources.en-US.xaml", UriKind.Relative);
                     break;
             }
             Current.Resources.MergedDictionaries.Add(dict);
         }
 
-        public static string GetTranslatedString(string key)
+        public static string GetTranslatedText(string key)
         {
             return Current.TryFindResource(key)?.ToString();
         }

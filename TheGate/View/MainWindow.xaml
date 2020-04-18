@@ -7,6 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:taskbar="http://www.hardcodet.net/taskbar"
         xmlns:converter="clr-namespace:TheGate.ViewModel.Converter"
+        xmlns:prop="clr-namespace:TheGate.Properties"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -15,12 +16,14 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="Manual"
         Title="{DynamicResource ApplicationName}"
         Icon="pack://application:,,,/assets/favicon.ico"
-        Height="400"
-        Width="600"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        Height="{Binding Source={x:Static prop:Settings.Default}, Path=Height, Mode=TwoWay}"
+        Width="{Binding Source={x:Static prop:Settings.Default}, Path=Width, Mode=TwoWay}"
+        Left="{Binding Source={x:Static prop:Settings.Default}, Path=Left, Mode=TwoWay}"
+        Top="{Binding Source={x:Static prop:Settings.Default}, Path=Top, Mode=TwoWay}">
 
     <Window.Resources>
         <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -45,9 +48,9 @@
                     <DockPanel>
                         <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                             <StackPanel>
-                                <Button Content="Settings" IsEnabled="True" />
+                                <Button Content="{DynamicResource Settings}" IsEnabled="True" Command="{Binding ShowSettingsCommand}" />
                                 <Separator/>
-                                <Button Content="Exit" IsEnabled="True" Command="{Binding ExitApplicationCommand}"/>
+                                <Button Content="{DynamicResource Exit}" IsEnabled="True" Command="{Binding ExitApplicationCommand}"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
                         <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back" Command="{Binding WebBrowser.WebBrowserInstance.BackCommand}">

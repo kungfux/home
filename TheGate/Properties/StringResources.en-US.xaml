@@ -4,4 +4,6 @@
     <system:String x:Key="ApplicationName">The Gate</system:String>
     <system:String x:Key="MessageDefaultCaption">The Gate says...</system:String>
     <system:String x:Key="MessageAppAlreadyRunning" xml:space="preserve">The Gate is already running.&#13;You can find its icon in system tray.</system:String>
+    <system:String x:Key="Exit">Exit</system:String>
+    <system:String x:Key="Settings">Settings</system:String>
 </ResourceDictionary>

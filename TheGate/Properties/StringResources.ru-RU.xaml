@@ -4,4 +4,6 @@
     <system:String x:Key="ApplicationName">The Gate</system:String>
     <system:String x:Key="MessageDefaultCaption">The Gate сообщает...</system:String>
     <system:String x:Key="MessageAppAlreadyRunning" xml:space="preserve">Entry Point уже запущен.&#13;Вы можете найти иконку приложения в системном лотке рядом с часами.</system:String>
+    <system:String x:Key="Exit">Выход</system:String>
+    <system:String x:Key="Settings">Настройки</system:String>
 </ResourceDictionary>

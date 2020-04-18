@@ -9,13 +9,17 @@ namespace TheGate.ViewModel
         public WebBrowser WebBrowser { get; }
         
         public ICommand ShowWindowCommand { get; }
+        public ICommand ShowSettingsCommand { get; }
         public ICommand ExitApplicationCommand { get; }
 
         public MainWindowViewModel()
         {
+            SetDefaultLocationProps();
+
             WebBrowser = new WebBrowser();
 
             ShowWindowCommand = new RelayCommand<object>(OnShowWindow);
+            ShowSettingsCommand = new RelayCommand(OnShowSettingsCommand);
             ExitApplicationCommand = new RelayCommand(OnExitApplication);
         }
 
@@ -28,9 +32,24 @@ namespace TheGate.ViewModel
             }
         }
 
+        public static void OnShowSettingsCommand()
+        {
+            //DialogHost
+        }
+
         public static void OnExitApplication()
         {
+            Properties.Settings.Default.Save();
             Application.Current.Shutdown();
+        }
+
+        private void SetDefaultLocationProps()
+        {
+            if (Properties.Settings.Default.Left == 0 || Properties.Settings.Default.Top == 0)
+            {
+                Properties.Settings.Default.Left = (int)SystemParameters.WorkArea.Width / 2;
+                Properties.Settings.Default.Top = (int)SystemParameters.WorkArea.Height / 2;
+            }
         }
     }
 }

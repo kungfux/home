@@ -12,7 +12,7 @@ namespace TheGate.Model
         {
             WebBrowserInstance = new ChromiumWebBrowser()
             {
-                Address = "http://google.com"
+                Address = Properties.Settings.Default.URL
             };
 
             WebBrowserInstance.BrowserSettings = new BrowserSettings()
