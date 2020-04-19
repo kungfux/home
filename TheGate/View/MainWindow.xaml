@@ -1,0 +1,72 @@
+﻿<Window x:Class="TheGate.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:TheGate.ViewModel"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:taskbar="http://www.hardcodet.net/taskbar"
+        xmlns:converter="clr-namespace:TheGate.ViewModel.Converter"
+        xmlns:prop="clr-namespace:TheGate.Properties"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="Manual"
+        Title="{DynamicResource ApplicationName}"
+        Icon="pack://application:,,,/assets/favicon.ico"
+        Closing="Window_Closing"
+        IsVisibleChanged="Window_IsVisibleChanged"
+        Height="{Binding Source={x:Static prop:Settings.Default}, Path=Height, Mode=TwoWay}"
+        Width="{Binding Source={x:Static prop:Settings.Default}, Path=Width, Mode=TwoWay}"
+        Left="{Binding Source={x:Static prop:Settings.Default}, Path=Left, Mode=TwoWay}"
+        Top="{Binding Source={x:Static prop:Settings.Default}, Path=Top, Mode=TwoWay}">
+
+    <Window.Resources>
+        <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <materialDesign:DialogHost>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <taskbar:TaskbarIcon Visibility="Visible" ToolTipText="{DynamicResource ApplicationName}" IconSource="pack://application:,,,/assets/favicon.ico" LeftClickCommand="{Binding ShowWindowCommand}" LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+
+            <materialDesign:ColorZone Grid.Row="0" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
+                <StackPanel Orientation="Vertical">
+                    <DockPanel>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                            <StackPanel>
+                                <Button Content="{DynamicResource Settings}" IsEnabled="True" Command="{Binding ShowSettingsCommand}" />
+                                <Separator/>
+                                <Button Content="{DynamicResource Exit}" IsEnabled="True" Command="{Binding ExitApplicationCommand}"/>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                        <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back" Command="{Binding WebBrowser.WebBrowserInstance.BackCommand}">
+                            <materialDesign:PackIcon Kind="StepBackward" Height="24" Width="24" />
+                        </Button>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Text="{Binding WebBrowser.WebBrowserInstance.Title}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </materialDesign:ColorZone>
+
+            <ProgressBar Grid.Row="1" Height="5" IsIndeterminate="{Binding WebBrowser.WebBrowserInstance.IsLoading}" Visibility="{Binding WebBrowser.WebBrowserInstance.IsLoading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            <ContentControl Grid.Row="2" UseLayoutRounding="True" Content="{Binding WebBrowser.WebBrowserInstance}"/>
+        </Grid>
+    </materialDesign:DialogHost>
+</Window>
