@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.ComponentModel;
+using TheGate.Model;
 
 namespace TheGate.View
 {
@@ -14,6 +15,17 @@ namespace TheGate.View
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(e.NewValue is bool)
+            {
+                if ((bool)e.NewValue && Properties.Settings.Default.ReloadOnOpen)
+                {
+                    WebBrowser.ForceReload();
+                }
+            }
         }
     }
 }

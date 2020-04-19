@@ -83,5 +83,17 @@ namespace TheGate.Properties {
                 this["Left"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ReloadOnOpen {
+            get {
+                return ((bool)(this["ReloadOnOpen"]));
+            }
+            set {
+                this["ReloadOnOpen"] = value;
+            }
+        }
     }
 }

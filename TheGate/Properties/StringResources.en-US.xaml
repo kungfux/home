@@ -6,4 +6,8 @@
     <system:String x:Key="MessageAppAlreadyRunning" xml:space="preserve">The Gate is already running.&#13;You can find its icon in system tray.</system:String>
     <system:String x:Key="Exit">Exit</system:String>
     <system:String x:Key="Settings">Settings</system:String>
+    <system:String x:Key="CloseSettings">CLOSE</system:String>
+    <system:String x:Key="RequiredField">This field is required</system:String>
+    <system:String x:Key="URL">URL</system:String>
+    <system:String x:Key="ReloadOnWindowOpen">Reload page on every window open</system:String>
 </ResourceDictionary>

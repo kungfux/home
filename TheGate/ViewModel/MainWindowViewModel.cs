@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using MaterialDesignThemes.Wpf;
+using System.Windows;
 using System.Windows.Input;
 using TheGate.Model;
+using TheGate.View.Dialog;
 
 namespace TheGate.ViewModel
 {
@@ -32,9 +34,14 @@ namespace TheGate.ViewModel
             }
         }
 
-        public static void OnShowSettingsCommand()
+        public static async void OnShowSettingsCommand()
         {
-            //DialogHost
+            var view = new SettingsViewDialog
+            {
+                DataContext = new SettingsDialogViewModel()
+            };
+
+            await DialogHost.Show(view);
         }
 
         public static void OnExitApplication()
@@ -47,8 +54,8 @@ namespace TheGate.ViewModel
         {
             if (Properties.Settings.Default.Left == 0 || Properties.Settings.Default.Top == 0)
             {
-                Properties.Settings.Default.Left = (int)SystemParameters.WorkArea.Width / 2;
-                Properties.Settings.Default.Top = (int)SystemParameters.WorkArea.Height / 2;
+                Properties.Settings.Default.Left = (int)SystemParameters.WorkArea.Width / 2 - Properties.Settings.Default.Width / 2;
+                Properties.Settings.Default.Top = (int)SystemParameters.WorkArea.Height / 2 - Properties.Settings.Default.Height / 2;
             }
         }
     }

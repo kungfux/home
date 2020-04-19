@@ -6,7 +6,7 @@ namespace TheGate.Model
 {
     public class WebBrowser
     {
-        public ChromiumWebBrowser WebBrowserInstance { get; }
+        public static ChromiumWebBrowser WebBrowserInstance { get; private set; }
 
         public WebBrowser()
         {
@@ -26,6 +26,22 @@ namespace TheGate.Model
             //};
 
             WebBrowserInstance.KeyDown += WebBrowserInstance_KeyDown;
+        }
+
+        public static void LoadNewUrl()
+        {
+            if (WebBrowserInstance != null)
+            {
+                WebBrowserInstance.Address = Properties.Settings.Default.URL;
+            }
+        }
+
+        public static void ForceReload()
+        {
+            if (WebBrowserInstance != null)
+            {
+                WebBrowserInstance.Reload();
+            }
         }
 
         private void WebBrowserInstance_KeyDown(object sender, KeyEventArgs e)

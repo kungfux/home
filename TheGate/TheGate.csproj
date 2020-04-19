@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\Dialog\SettingsViewDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,7 +87,12 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\Rule\RequiredFieldValidationRule.cs" />
     <Compile Include="ViewModel\SettingBindingExtension.cs" />
+    <Compile Include="ViewModel\SettingsDialogViewModel.cs" />
+    <Compile Include="View\Dialog\SettingsViewDialog.xaml.cs">
+      <DependentUpon>SettingsViewDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

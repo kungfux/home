@@ -6,4 +6,8 @@
     <system:String x:Key="MessageAppAlreadyRunning" xml:space="preserve">Entry Point уже запущен.&#13;Вы можете найти иконку приложения в системном лотке рядом с часами.</system:String>
     <system:String x:Key="Exit">Выход</system:String>
     <system:String x:Key="Settings">Настройки</system:String>
+    <system:String x:Key="CloseSettings">ЗАКРЫТЬ</system:String>
+    <system:String x:Key="RequiredField">Это обязательное поле</system:String>
+    <system:String x:Key="URL">URL</system:String>
+    <system:String x:Key="ReloadOnWindowOpen">Обновлять страницу при каждом открытии окна</system:String>
 </ResourceDictionary>
