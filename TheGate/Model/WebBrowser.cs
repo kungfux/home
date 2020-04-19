@@ -38,7 +38,7 @@ namespace TheGate.Model
 
         public static void ForceReload()
         {
-            if (WebBrowserInstance != null)
+            if (WebBrowserInstance != null && WebBrowserInstance.IsLoaded)
             {
                 WebBrowserInstance.Reload();
             }
