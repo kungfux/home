@@ -4,6 +4,8 @@
 
 Windows desktop app that stays in system tray and provides a quick access to your smart home web panel such as OpenHAB Basic UI
 
+![](https://user-images.githubusercontent.com/10548881/80051701-8204f780-8521-11ea-85c4-393e29eabf3a.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
