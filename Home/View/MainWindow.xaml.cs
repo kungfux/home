@@ -17,6 +17,11 @@ namespace Home.View
             Hide();
         }
 
+        private void Window_Deactivated(object sender, System.EventArgs e)
+        {
+            Hide();
+        }
+
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is bool)

@@ -53,6 +53,7 @@ namespace Home.ViewModel
             {
                 var window = parameter as Window;
                 window.Show();
+                window.Activate();
             }
         }
 

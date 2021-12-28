@@ -20,6 +20,7 @@
         Title="{DynamicResource ApplicationName}"
         Icon="pack://application:,,,/assets/favicon.ico"
         Closing="Window_Closing"
+        Deactivated="Window_Deactivated"
         IsVisibleChanged="Window_IsVisibleChanged"
         Height="{Binding Source={x:Static prop:Settings.Default}, Path=Height, Mode=TwoWay}"
         Width="{Binding Source={x:Static prop:Settings.Default}, Path=Width, Mode=TwoWay}"
