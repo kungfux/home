@@ -9,22 +9,27 @@ namespace Home
         private const string _mutexName = "{0070DB76-3228-42CA-A33A-70136487DF26}";
         private static Mutex _mutex;
 
-        private void Application_Startup(object sender, StartupEventArgs e)
+        public static string GetTranslatedText(string key)
         {
-            SetDefaultLanguageDictionary();
-
-            if (IsAppAlreadyRunning() || !InitMutex())
-            {
-                MessageBox.Show(
-                    GetTranslatedText("MessageAppAlreadyRunning"),
-                    GetTranslatedText("MessageDefaultCaption"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Exclamation);
-                Current.Shutdown();
-            }
+            return Current.TryFindResource(key)?.ToString();
         }
 
-        private static bool IsAppAlreadyRunning() => Mutex.TryOpenExisting(_mutexName, out _);
+        public static void SetDefaultLanguageDictionary()
+        {
+            var dict = new ResourceDictionary();
+            switch (Thread.CurrentThread.CurrentCulture.ToString())
+            {
+                default:
+                case "en-US":
+                    dict.Source = new Uri("Properties\\StringResources.en-US.xaml", UriKind.Relative);
+                    break;
+
+                case "ru-RU":
+                    dict.Source = new Uri("Properties\\StringResources.ru-RU.xaml", UriKind.Relative);
+                    break;
+            }
+            Current.Resources.MergedDictionaries.Add(dict);
+        }
 
         private static bool InitMutex()
         {
@@ -39,25 +44,27 @@ namespace Home
             }
         }
 
-        public static void SetDefaultLanguageDictionary()
-        {
-            var dict = new ResourceDictionary();
-            switch (Thread.CurrentThread.CurrentCulture.ToString())
-            {
-                default:
-                case "en-US":
-                    dict.Source = new Uri("Properties\\StringResources.en-US.xaml", UriKind.Relative);
-                    break;
-                case "ru-RU":
-                    dict.Source = new Uri("Properties\\StringResources.ru-RU.xaml", UriKind.Relative);
-                    break;
-            }
-            Current.Resources.MergedDictionaries.Add(dict);
-        }
+        private static bool IsAppAlreadyRunning() => Mutex.TryOpenExisting(_mutexName, out _);
 
-        public static string GetTranslatedText(string key)
+        private void Application_Startup(object sender, StartupEventArgs e)
         {
-            return Current.TryFindResource(key)?.ToString();
+            SetDefaultLanguageDictionary();
+
+            if (IsAppAlreadyRunning() || !InitMutex())
+            {
+                MessageBox.Show(
+                    GetTranslatedText("MessageAppAlreadyRunning"),
+                    GetTranslatedText("MessageDefaultCaption"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Exclamation);
+                Current.Shutdown();
+            }
+
+            var mainWindow = new View.MainWindow();
+            if (!Home.Properties.Settings.Default.HideOnStart)
+            {
+                mainWindow.Show();
+            }
         }
     }
 }

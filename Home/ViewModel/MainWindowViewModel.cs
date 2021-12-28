@@ -8,12 +8,6 @@ namespace Home.ViewModel
 {
     public class MainWindowViewModel
     {
-        public WebBrowser WebBrowser { get; }
-        
-        public ICommand ShowWindowCommand { get; }
-        public ICommand ShowSettingsCommand { get; }
-        public ICommand ExitApplicationCommand { get; }
-
         public MainWindowViewModel()
         {
             SetDefaultLocationProps();
@@ -25,13 +19,22 @@ namespace Home.ViewModel
             ExitApplicationCommand = new RelayCommand(OnExitApplication);
         }
 
-        public static void OnShowWindow(object parameter)
+        public ICommand ExitApplicationCommand { get; }
+
+        public bool ShowHeader
         {
-            if (parameter is Window)
-            {
-                var window = parameter as Window;
-                window.Show();
-            }
+            get { return Properties.Settings.Default.ShowHeader; }
+        }
+
+        public ICommand ShowSettingsCommand { get; }
+
+        public ICommand ShowWindowCommand { get; }
+        public WebBrowser WebBrowser { get; }
+
+        public static void OnExitApplication()
+        {
+            Properties.Settings.Default.Save();
+            Application.Current.Shutdown();
         }
 
         public static async void OnShowSettingsCommand()
@@ -44,10 +47,13 @@ namespace Home.ViewModel
             await DialogHost.Show(view);
         }
 
-        public static void OnExitApplication()
+        public static void OnShowWindow(object parameter)
         {
-            Properties.Settings.Default.Save();
-            Application.Current.Shutdown();
+            if (parameter is Window)
+            {
+                var window = parameter as Window;
+                window.Show();
+            }
         }
 
         private void SetDefaultLocationProps()

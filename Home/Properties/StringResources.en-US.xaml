@@ -9,5 +9,7 @@
     <system:String x:Key="CloseSettings">CLOSE</system:String>
     <system:String x:Key="RequiredField">This field is required</system:String>
     <system:String x:Key="URL">URL</system:String>
-    <system:String x:Key="ReloadOnWindowOpen">Reload page on every window open</system:String>
+    <system:String x:Key="ShowHeaderText">Show header</system:String>
+    <system:String x:Key="HideOnStartText">Hide window on start</system:String>
+    <system:String x:Key="ReloadText">Reload page on window open</system:String>
 </ResourceDictionary>

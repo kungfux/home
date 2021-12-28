@@ -12,8 +12,8 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="Manual"
@@ -31,42 +31,42 @@
     </Window.Resources>
 
     <Window.DataContext>
-        <viewmodel:MainWindowViewModel/>
+        <viewmodel:MainWindowViewModel />
     </Window.DataContext>
 
     <materialDesign:DialogHost>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <taskbar:TaskbarIcon Visibility="Visible" ToolTipText="{DynamicResource ApplicationName}" IconSource="pack://application:,,,/assets/favicon.ico" LeftClickCommand="{Binding ShowWindowCommand}" LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" ToolTip="{DynamicResource ApplicationName}"/>
+            <taskbar:TaskbarIcon Visibility="Visible" ToolTipText="{DynamicResource ApplicationName}" IconSource="pack://application:,,,/assets/favicon.ico" LeftClickCommand="{Binding ShowWindowCommand}" LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" ToolTip="{DynamicResource ApplicationName}" />
 
-            <materialDesign:ColorZone Grid.Row="0" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid">
+            <materialDesign:ColorZone Grid.Row="0" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Visibility="{Binding ShowHeader, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Vertical">
                     <DockPanel>
                         <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                             <StackPanel>
                                 <Button Content="{DynamicResource Settings}" IsEnabled="True" Command="{Binding ShowSettingsCommand}" />
-                                <Separator/>
-                                <Button Content="{DynamicResource Exit}" IsEnabled="True" Command="{Binding ExitApplicationCommand}"/>
+                                <Separator />
+                                <Button Content="{DynamicResource Exit}" IsEnabled="True" Command="{Binding ExitApplicationCommand}" />
                             </StackPanel>
                         </materialDesign:PopupBox>
                         <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolForegroundButton}" HorizontalAlignment="Left" ToolTip="Go Back" Command="{Binding WebBrowser.WebBrowserInstance.BackCommand}">
                             <materialDesign:PackIcon Kind="StepBackward" Height="24" Width="24" />
                         </Button>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Text="{Binding WebBrowser.WebBrowserInstance.Title}"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Text="{Binding WebBrowser.WebBrowserInstance.Title}" />
                         </StackPanel>
                     </DockPanel>
                 </StackPanel>
             </materialDesign:ColorZone>
 
-            <ProgressBar Grid.Row="1" Height="5" IsIndeterminate="{Binding WebBrowser.WebBrowserInstance.IsLoading}" Visibility="{Binding WebBrowser.WebBrowserInstance.IsLoading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <ProgressBar Grid.Row="1" Height="5" IsIndeterminate="{Binding WebBrowser.WebBrowserInstance.IsLoading}" Visibility="{Binding WebBrowser.WebBrowserInstance.IsLoading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-            <ContentControl Grid.Row="2" UseLayoutRounding="True" Content="{Binding WebBrowser.WebBrowserInstance}"/>
+            <ContentControl Grid.Row="2" UseLayoutRounding="True" Content="{Binding WebBrowser.WebBrowserInstance}" />
         </Grid>
     </materialDesign:DialogHost>
 </Window>
