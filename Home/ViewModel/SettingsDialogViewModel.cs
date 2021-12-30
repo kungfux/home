@@ -6,10 +6,17 @@ namespace Home.ViewModel
 {
     public class SettingsDialogViewModel
     {
-        public string URL
+        public SettingsDialogViewModel()
         {
-            get { return Properties.Settings.Default.URL; }
-            set { Properties.Settings.Default.URL = value; }
+            CloseDialogCommand = new RelayCommand<object>(OnCloseDialog);
+        }
+
+        public ICommand CloseDialogCommand { get; }
+
+        public bool HideOnStart
+        {
+            get { return Properties.Settings.Default.HideOnStart; }
+            set { Properties.Settings.Default.HideOnStart = value; }
         }
 
         public bool Reload
@@ -18,11 +25,16 @@ namespace Home.ViewModel
             set { Properties.Settings.Default.ReloadOnOpen = value; }
         }
 
-        public ICommand CloseDialogCommand { get; }
-
-        public SettingsDialogViewModel()
+        public bool ShowHeader
         {
-            CloseDialogCommand = new RelayCommand<object>(OnCloseDialog);
+            get { return Properties.Settings.Default.ShowHeader; }
+            set { Properties.Settings.Default.ShowHeader = value; }
+        }
+
+        public string URL
+        {
+            get { return Properties.Settings.Default.URL; }
+            set { Properties.Settings.Default.URL = value; }
         }
 
         public static void OnCloseDialog(object parameter)

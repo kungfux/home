@@ -17,11 +17,18 @@ namespace Home.View
             Hide();
         }
 
+        private void Window_Deactivated(object sender, System.EventArgs e)
+        {
+            Hide();
+        }
+
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if(e.NewValue is bool)
+            if (e.NewValue is bool)
             {
-                if ((bool)e.NewValue && Properties.Settings.Default.ReloadOnOpen)
+                var newValue = (bool)e.NewValue;
+
+                if (newValue && Properties.Settings.Default.ReloadOnOpen)
                 {
                     WebBrowser.ForceReload();
                 }

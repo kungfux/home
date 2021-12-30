@@ -9,5 +9,7 @@
     <system:String x:Key="CloseSettings">ЗАКРЫТЬ</system:String>
     <system:String x:Key="RequiredField">Это обязательное поле</system:String>
     <system:String x:Key="URL">URL</system:String>
-    <system:String x:Key="ReloadOnWindowOpen">Обновлять страницу при каждом открытии окна</system:String>
+    <system:String x:Key="ShowHeaderText">Показывать заголовок</system:String>
+    <system:String x:Key="HideOnStartText">Прятать окно при запуске</system:String>
+    <system:String x:Key="ReloadText">Обновлять страницу при открытии</system:String>
 </ResourceDictionary>
