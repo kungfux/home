@@ -29,6 +29,11 @@
 
     <Window.Resources>
         <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ContextMenu x:Shared="false" x:Key="TaskbarContextMenu">
+            <MenuItem Header="Settings" Command="{Binding ShowSettingsCommand}" />
+            <Separator />
+            <MenuItem Header="Exit" Command="{Binding ExitApplicationCommand}" />
+        </ContextMenu>
     </Window.Resources>
 
     <Window.DataContext>
@@ -43,7 +48,14 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <taskbar:TaskbarIcon Visibility="Visible" ToolTipText="{DynamicResource ApplicationName}" IconSource="pack://application:,,,/assets/favicon.ico" LeftClickCommand="{Binding ShowWindowCommand}" LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" ToolTip="{DynamicResource ApplicationName}" />
+            <taskbar:TaskbarIcon
+                Visibility="Visible"
+                ToolTipText="{DynamicResource ApplicationName}"
+                IconSource="pack://application:,,,/assets/favicon.ico"
+                LeftClickCommand="{Binding ShowWindowCommand}"
+                LeftClickCommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                ToolTip="{DynamicResource ApplicationName}"
+                ContextMenu="{StaticResource TaskbarContextMenu}" />
 
             <materialDesign:ColorZone Grid.Row="0" Padding="8" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Visibility="{Binding ShowHeader, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Vertical">
